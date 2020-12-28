@@ -1,0 +1,69 @@
+{% extends "games/base.html" %}
+
+{% block game_js %}
+<script src="/static/games/caterpillar2.js"></script>
+{% endblock game_js %} 
+
+{% block page_title %}
+    <h1>Title</h1>
+{% endblock page_title %}
+
+{% block content %}
+
+<div id="main-cont">
+	<div class="game-settings">
+		<label for="speed">Speed</label>
+		<select name="speed" id="speed">
+			<option value="10">1</option>
+			<option value="9">2</option>
+			<option value="8">3</option>
+			<option value="7">4</option>
+			<option value="6">5</option>
+			<option value="5">6</option>
+			<option value="4">7</option>
+			<option value="3">8</option>
+			<option value="2">9</option>
+			<option value="1">10</option>
+		</select>
+		<label for="length">Length</label>
+		<select name="length" id="length">
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		</select>
+		<label for="thickness">Thickness</label>
+		<select name="thickness" id="thickness">
+			<option value="10">1</option>
+			<option value="15">2</option>
+			<option value="20">3</option>
+			<option value="25">4</option>
+			<option value="30">5</option>
+		</select>
+	<input type="button" class="main-btn" id="start-btn" value="Start" onclick="startGame();">
+	</div>
+
+	<div class="info-area-cont">
+		<div class="message-cont">
+			<p id="general-message" class="info-message"></p>
+			<p id="game-message" class="info-message"></p>
+		</div>
+		<span>Feed Level</span>
+		<div id="bar-feed-level-wrapper">
+			<div id="bar-feed-level"></div>
+		</div>
+	</div>
+	<br />
+	<div class="boards-cont">
+		<div id="my-board-wrapper">
+			<canvas id="board" width="900" height="500"></canvas>
+		</div>
+	</div>
+</div>
+<iframe style="display:none" onload="initBoard();" src=""></iframe>
+{% endblock content %}

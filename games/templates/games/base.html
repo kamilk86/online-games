@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="/static/games/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		<script src="/static/games/main.js"></script>
+	</head>
+	<body onload="updateUserView();">
+		<div class="navbar">
+			<div class="links-container">
+				<a class="active" href="/">Home</a>
+				<div class="dropdown">
+					<button class="dropdown-btn">
+						Games
+						<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+						<a href="/games/battleship/lobby/">Battleship</a>
+						<a href="#">Tic Tac Toe</a>
+						<a href="#">Chess</a>
+						<a href="/games/escape/">Escape</a>
+						<a href="/games/caterpillar/">Caterpillar</a>
+					</div>
+				</div>
+				<a href="/about">About</a>
+			</div>
+			<div class="login-container" id="login-container">
+				<form action="http://192.168.0.3:9000/api/user-auth/" method="POST" id="login-form">
+					<input type="text" name="username" id="username" placeholder="Username" required />
+					<input type="password" name="password" id="pass" placeholder="Password" required />
+					<button type="submit" class="main-btn">Login</button>
+				</form>
+				<button class="main-btn" onclick="openRegister();">Sign Up</button>
+			</div>
+			<div class="logged-container" id="logged-container">
+				<p id="user-info"></p>
+				<div class="account-dropdown">
+					<i class="fas fa-user-circle" id="account-icon"></i>
+					<div class="account-content">
+						<a href="#">Stats</a>
+						<a href="#">Settings</a>
+						<a href="#" id="logout-btn">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="register-popup" id="register-form">
+			<form action="/api/register/" method="POST" class="form-container">
+				<h1>Sign Up</h1>
+				<label for="username"><b>Username</b></label
+				><br />
+				<input type="text" placeholder="Enter Username" name="username" required /><br /><br />
+
+				<label for="password"><b>Password</b></label
+				><br />
+				<input type="password" placeholder="Enter Password" name="password" required /><br /><br />
+				<hr>
+				<button type="submit" class="main-btn">Register</button>
+				<button type="submit" class="main-btn" onclick="closeRegister()">Cancel</button>
+			</form>
+		</div>
+		{% block game_js %} {% endblock game_js %}
+		{% block page_title %} {% endblock page_title %}
+		<br />
+		<div id="outer-cont">
+			{% block content %} {% endblock content %}	
+		</div>
+	</body>
+</html>

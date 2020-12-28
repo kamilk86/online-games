@@ -1,0 +1,398 @@
+
+/* ------------ BASE STYLE ------------ */
+
+body {
+	background-color: rgb(235, 235, 235);
+	margin: 0;
+}
+
+label {
+	margin: 10px;
+	padding: 10px;
+}
+
+#outer-cont {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	/*background-color: mediumslateblue;*/
+	background-color: lightseagreen;
+}
+#main-cont {
+	display: flex;
+	flex-direction: column;
+}
+
+/* NAVBAR */
+.navbar {
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	box-shadow: 2px 2px 5px #888888;
+	background-color: #003366;
+	
+}
+
+.navbar .links-container {
+	display: flex;
+	flex-grow: 8;
+}
+
+.navbar .login-container {
+	flex-grow: 1;
+	padding: 5px;
+}
+
+.navbar .links-container a {
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.navbar .links-container a:hover {
+	background-color: dodgerblue;
+	color: white;
+}
+
+.navbar .links-container a:active {
+	background-color: dodgerblue;
+	color: white;
+}
+
+.navbar input {
+	outline: none;
+	font-size: 15px;
+	border: none;
+	width: 100px;
+	padding: 5px;
+}
+
+.dropdown-btn {
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	padding: 14px 16px;
+	cursor: pointer;
+	background-color: inherit;
+	font-family: inherit; /* Important for vertical align on mobile phones */
+	margin: 0;
+}
+.dropdown-btn:hover {
+	background-color: dodgerblue;
+	color: white;
+}
+
+.dropdown-content {
+	display: none;
+	z-index: 1;
+	flex-direction: column;
+	position: absolute;
+    /*background-color: #f9f9f9;*/
+    background-color: #003366;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover .dropdown-content {
+	display: flex;
+}
+
+.login-container {
+	display: flex;
+}
+
+/*REGISTER POPUP*/
+
+.register-popup {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+    margin-left: -150px;
+	border: 3px solid #f1f1f1;
+	z-index: 9;
+}
+.form-container input {
+	outline: none;
+	font-size: 15px;
+	box-sizing : border-box;
+	border: none;
+	width: 100%;
+  	padding: 10px;
+	margin: 0;
+	background: #f1f1f1;
+}
+.form-container {
+	max-width: 400px;
+	max-height: 500px;
+	padding: 15px;
+	background-color: white;
+}
+
+/* LOGIN BAR */
+
+.logged-container {
+	display: none;
+	margin-right: 15px;
+}
+
+#user-info {
+	color: white;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.account-dropdown {
+	cursor: pointer;
+}
+
+#account-icon {
+	margin: 5px;
+	font-size: 34px;
+	color: white;
+}
+
+.account-content {
+	display: none;
+	z-index: 1;
+	flex-direction: column;
+	position: absolute;
+	right: 0;
+	left: auto;
+	margin-top: 4px;
+    /*background-color: #f9f9f9;*/
+    background-color: #003366;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.account-content a {
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 18px;
+}
+.account-content a:hover {
+	background-color: dodgerblue;
+	color: white;
+}
+
+.account-content a:active {
+	background-color: dodgerblue;
+	color: white;
+}
+
+.account-dropdown:hover .account-content {
+	display: flex;
+}
+
+/*BUTTONS*/
+.main-btn {
+	background-color: dodgerblue;
+	padding: 5px;
+	margin: 5px;
+	color: white;
+	border: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow: 2px 5px 5px grey;
+}
+
+.main-btn:hover {
+	background-color:  #3366FF;
+}
+.main-btn:active {
+	background-color:  #3366FF;
+	box-shadow: 0 3px 5px darkslategrey;
+	transform: translateY(4px);
+}
+.main-btn:disabled {
+	background-color: lightgray;
+}
+.main-btn:focus {
+	border: none;
+	outline: none;
+}
+
+/* -------------- GAME LOBBY --------------*/
+#lobby-cont {
+	min-width: 400px;
+	min-height: 600px;
+	margin: 45px 20px 20px 20px;
+	padding-top: 10px;
+	background-color: rgb(235, 235, 235);
+	box-shadow: 2px 2px 5px #888888;
+	border-radius: 2px;
+	overflow-y: auto;
+}
+
+#players-tbl {
+	width: 85%;
+	background-color: white;
+	margin: 10px;
+	padding: 10px;
+}
+
+
+#players-lbl-wrapper {
+	text-align: center;
+}
+
+#players-tbl {
+	background-color: rgb(235, 235, 235);
+}
+
+.uname {
+	background-color: rgb(235, 235, 235);
+}
+.uname:hover {
+	background-color: dodgerblue;
+	color: white;
+	cursor: pointer;
+}
+
+
+
+/* ----------- GAME AREA -----------*/
+
+
+.info-area-cont {
+	display: flex;
+	flex-wrap: wrap;
+	box-shadow: 2px 2px 5px #888888;
+	border-radius: 2px;
+	background-color: white;
+	flex-direction: column;
+	margin: 2px;
+}
+
+.message-cont {
+	flex: 1 1 50px;
+	flex-direction: column;
+	flex-grow: 2;
+	padding: 5px;
+}
+
+.info-message {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	margin: 5px;
+
+}
+#info-canvas-wrapper {
+	flex: 1 1 50px;
+	flex-grow: 1;
+
+}
+#info-canvas {
+
+}
+
+
+.game-settings {
+	padding: 5px;
+	display: flex;
+	/*border: 2px solid red;"*/
+}
+
+.boards-cont {
+	display: flex;
+	flex-direction: row;
+	background-color: white;
+	padding-top: 10px;
+	border-radius: 2px;
+	flex-wrap: wrap;
+	box-shadow: 2px 2px 5px #888888;
+}
+
+/* caterpillar only elements */
+#bar-feed-level-wrapper {
+	background-color: #ddd;
+	width: 200px;
+	
+}
+
+#bar-feed-level {
+	background-color: #4CAF50;
+	height: 20px;
+	text-align: center;
+	color: white;
+}
+
+/* CHAT WINDOW */
+#opponent-name {
+	font-weight: bold;
+	color: #3366FF;/*mediumslateblue;*/
+}
+#chat-header-cont {
+	display: flex;
+}
+#chat-cont {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 300px;
+	height: 400px;
+	margin: 45px 20px 20px 20px;
+	padding-top: 10px;
+	background-color: white;
+	box-shadow: 2px 2px 5px #888888;
+	border-radius: 2px;
+}
+
+#chat-msg-cont {
+	overflow-y: auto;
+	flex-direction: column;
+	align-items: center;
+	width: 90%;
+	height: 90%;
+	margin: 5px;
+	padding: 5px;
+	background-color: whitesmoke;
+	border: solid lightgray 1px;
+	border-radius: 2px;
+}
+
+#chat-input-cont {
+	display: flex;
+	margin: 5px;
+}
+
+#chat-msg-input {
+	border: solid lightgray 1px;
+	outline: none;
+	padding: 3px;
+	font-size: 15px;
+	flex-basis: 90%;
+}
+
+.chat-msg-light {
+	background-color:lightsteelblue;
+	box-shadow: 1px 1px 4px #888888;
+	border-radius: 2px;
+	width: 95%;
+	word-wrap: break-word; 
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+.chat-msg-dark {
+	background-color: lightblue;
+	box-shadow: 1px 1px 4px #888888;
+	border-radius: 2px;
+	width: 95%;
+	word-wrap: break-word; 
+	padding: 5px;
+	margin-bottom: 5px;
+}
+

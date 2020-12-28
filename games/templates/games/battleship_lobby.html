@@ -1,0 +1,18 @@
+{% extends "games/base.html" %}
+
+{% block page_title %}
+    <h1>Battleship Lobby</h1>
+{% endblock page_title %}
+
+{% block content %}
+<script src="/static/games/lobby.js"></script>
+<div id="lobby-cont">
+    <p id="lobby_msg"></p>
+    <div id="players-lbl-wrapper">
+        <label for="players-tbl" id="players-lbl">Players Online</label>
+    </div>
+    <hr style="margin: 10px 30px 10px 30px;">
+    <table id="players-tbl"></table>
+</div>
+<iframe style="display:none" onload="joinLobby();" src=""></iframe>
+{% endblock content %}

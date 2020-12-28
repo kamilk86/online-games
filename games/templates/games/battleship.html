@@ -1,0 +1,57 @@
+{% extends "games/base.html" %}
+
+{% block game_js %}
+<script src="/static/games/battleship.js"></script>
+{% endblock game_js %} 
+
+{% block page_title %}
+    <h1>Battleship Game</h1>
+{% endblock page_title %}
+
+{% block content %}
+<script src="/static/games/game.js"></script>
+<div id="main-cont">
+	<div class="game-settings">
+		<input type="button" id="btn-start" class="main-btn" value="Start Placing" onclick="initBoards()" />
+		<input type="button" id="btn-reset" class="main-btn" value="Reset Board" onclick="resetBoard()" />
+		<input type="button" id="btn-random" class="main-btn" value="Random Placement" onclick="autoPlace()" />
+		<input type="button" id="btn-ready" class="main-btn" value="I'm Ready!" onclick="playerReady()" />
+		<input type="button" id="btn-size" class="main-btn" value="Toggle Size" onclick="changeBoardSize()" />
+	</div>
+
+	<div class="info-area-cont">
+		<div class="message-cont">
+			<p id="general-message" class="info-message"></p>
+			<p id="game-message" class="info-message"></p>
+		</div>
+		<div id="info-canvas-wrapper">
+			<canvas id="info-canvas" width="250" height="60"></canvas>
+		</div>
+	</div>
+	<br />
+	<div class="boards-cont">
+		<div id="my-board-wrapper">
+			<label for="board">Your Board</label><br />
+			<canvas id="board" width="500" height="500"></canvas>
+		</div>
+		<div id="opponent-board-wrapper">
+			<label for="opponent-board">Opponent Board</label><br />
+			<canvas id="opponent-board" width="400" height="400"></canvas>
+		</div>
+	</div>
+</div>
+<div id="chat-cont">
+	<div id="chat-header-cont">
+		<h3>Chat with <span id="opponent-name"></span></h3>
+	</div>
+	<div id="chat-msg-cont">
+	</div>
+	<div id="chat-input-cont">
+		<input id="chat-msg-input" type="text" placeholder="Type message">
+		<button class="main-btn" id="send-btn" onclick="sendMsg();">Send</button>
+	</div>
+	
+</div>
+<iframe style="display:none" onload="joinChat();" src=""></iframe>
+
+{% endblock content %}

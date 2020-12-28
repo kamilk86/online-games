@@ -1,0 +1,40 @@
+{% extends "games/base.html" %}
+
+{% block game_js %}
+<script src="/static/games/escape.js"></script>
+{% endblock game_js %} 
+
+{% block page_title %}
+    <h1>Title</h1>
+{% endblock page_title %}
+
+{% block content %}
+
+<div id="main-cont">
+	<div class="game-settings">
+		<input type="button" id="btn-up" class="main-btn" value="Up" onclick="moveUp()" />
+		<input type="button" id="btn-down" class="main-btn" value="Down" onclick="moveDown()" />
+		<input type="button" id="btn-left" class="main-btn" value="Left" onclick="moveLeft()" />
+		<input type="button" id="btn-right" class="main-btn" value="Right" onclick="moveRight()" />
+		<input type="button" id="btn-size" class="main-btn" value="Faster" onclick="moveFaster()" />
+	</div>
+
+	<div class="info-area-cont">
+		<div class="message-cont">
+			<p id="general-message" class="info-message"></p>
+			<p id="game-message" class="info-message"></p>
+		</div>
+		<div id="info-canvas-wrapper">
+			<canvas id="info-canvas" width="250" height="60"></canvas>
+		</div>
+	</div>
+	<br />
+	<div class="boards-cont">
+		<div id="my-board-wrapper">
+			<label for="board">Game Board</label><br />
+			<canvas id="board" width="900" height="500"></canvas>
+		</div>
+	</div>
+</div>
+<iframe style="display:none" onload="initBoard();" src=""></iframe>
+{% endblock content %}
