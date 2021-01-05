@@ -110,7 +110,7 @@ function switchOpponentReady() {
 }
 
 
-// NOT NEEDED ?????
+// NOT NEEDED ?
 function isKeySmall(key) {
     // determines if key corresponds with small or large board
     var num = parseInt(key.split(":")[0]) / 2;
@@ -157,13 +157,13 @@ function getSurroundings(key) {
 
     a = [];
     other = [];
-    // Check squares left, up, right, bottom. squares shape: +
+    // Check squares left, up, right, bottom. Shape: +
     key1 = "" + (x - d) + ":" + y;
     key2 = "" + x + ":" + (y - d);
     key3 = "" + (x + d) + ":" + y;
     key4 = "" + x + ":" + (y + d);
 
-    // Check squares upper left, upper right, bottom right, bottom left. squares shape: x
+    // Check squares upper left, upper right, bottom right, bottom left. Shape: x
     key5 = "" + (x - d) + ":" + (y - d);
     key6 = "" + (x + d) + ":" + (y - d);
     key7 = "" + (x + d) + ":" + (y + d);
@@ -195,7 +195,7 @@ function getSurroundings(key) {
 };
 
 function autoPlace() {
-
+    // Randomly places ships on the board
     resetBoard();
 
     for (var [key, value] of Object.entries(ships[0])) {
@@ -232,6 +232,8 @@ function autoPlace() {
             boardsState[0][getKeyByVal(k)].is_taken = true;
             taken.push(k)
             adj.push.apply(adj, s[0]);
+            
+            // Places the rest of ship squares
             for (var ii = 0; ii < ships[0][key].size - 1; ii++) {
                 randomIdx = Math.floor(Math.random() * adj.length);
                 k = adj.splice(randomIdx, 1)[0];
@@ -255,13 +257,13 @@ function autoPlace() {
 function displayMsg(msg, c = "green", d = 0) {
     //console.log(msg, c, d);
     if (d == 0) {
-        var msg_out = document.getElementById("general-message");
-        msg_out.innerHTML = msg;
-        msg_out.style.color = c;
+        var msgOut = document.getElementById("general-message");
+        msgOut.innerHTML = msg;
+        msgOut.style.color = c;
     } else {
-        var msg_out = document.getElementById("game-message");
-        msg_out.innerHTML = msg;
-        msg_out.style.color = c;
+        var msgOut = document.getElementById("game-message");
+        msgOut.innerHTML = msg;
+        msgOut.style.color = c;
 
     };
 
@@ -449,7 +451,7 @@ function displayInfo() {
 };
 
 function playerReady() {
-    // change you reDY ERLIER
+    // Sends 'player ready' state to opponent
     if (gameState.you_ready) {
         document.getElementById("btn-start").disabled = true;
         document.getElementById("btn-reset").disabled = true;
@@ -461,7 +463,7 @@ function playerReady() {
             displayMsg("War has begun!", "green", 0);
         };
         
-        // Send your board state and ready state. Then if in sockets other player ready state received get his board state and redraw his board
+        // Send your board state and ready state. Then if other player ready state received, get his board state and redraw his board
         var msg = JSON.stringify({'msg_type': 'ready', 'board_state': JSON.stringify(boardsState[0]), 'ships': JSON.stringify(ships)});
         gameSock.send(msg)
         // TO DO add event after page reload as well
@@ -493,7 +495,7 @@ function playerReady() {
 };
 
 function updateAdjacent(x, y) {
-
+    
     keys = [];
     // Check squares left, up, right, bottom
     key1 = "" + (x - d) + ":" + y;
@@ -554,7 +556,7 @@ function updateBlocked() {
 };
 
 function isInside(key, posX, posY, dim) {
-    
+    // Determines if coordinates are inside a square
     x = parseInt(key.split(":")[0]);
     y = parseInt(key.split(":")[1]);
     
