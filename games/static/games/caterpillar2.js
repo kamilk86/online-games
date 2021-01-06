@@ -4,7 +4,7 @@ var worm = null;
 var intervalId = null;
 
 
-function Worm(stride, thickness, length, feedLevel) {
+function Caterpillar(stride, thickness, length, feedLevel) {
     // to do make stride hardcoded, as it stretches the worm
     this.stride = stride;
 
@@ -26,8 +26,9 @@ function Worm(stride, thickness, length, feedLevel) {
         return [this.stride, this.thickness, this.length, this.feedLevel, this.SegmentsCoords]
     }
 
-    this.updateFeedLevel = function() {
+    this.updateFeedLevel = function(amount) {
 
+        this.feedLevel -= amount;
         var bar = document.getElementById("bar-feed-level");
        
         //var barWrapper = document.getElementById("bar-feed-level-wrapper");
@@ -82,7 +83,7 @@ function Worm(stride, thickness, length, feedLevel) {
             var idx = Math.floor(Math.random() * this.directions.length);
             // up
             if (this.directions[idx] == 1 && this.SegmentsCoords[1][1] - this.thickness > 120 && this.SegmentsCoords[1][1] - (this.stride - 1) != this.SegmentsCoords[2][1]) {
-                // Add to increase chance of going the same way in next move. Prevents jiggle
+                // Add more 1 to pool to increase chance of going the same way in next move. Prevents jiggle
                 // Remove opposite direction to prevent going back in the next move
                 this.directions = [1, 1, 1, 1, 1, 3, 1, 4, 1, 1, 1, 1, 1, 1];
 
@@ -118,12 +119,11 @@ function Worm(stride, thickness, length, feedLevel) {
         };
     };
     this.move = function () {
-
+        // Moves each segment one by one
         if (this.segmentNum == 1) {
 
             if (this.strideNum == 1) {
-                this.feedLevel -= 1;
-                this.updateFeedLevel();
+                this.updateFeedLevel(1);
                 this.prevCoords[0] = [this.SegmentsCoords[this.segmentNum][0], this.SegmentsCoords[this.segmentNum][1]];
                 this.direction = this.pickDirection();
             }
@@ -157,7 +157,7 @@ function Worm(stride, thickness, length, feedLevel) {
             if (this.strideNum == 1) {
                 this.prevCoords[idx2] = [this.SegmentsCoords[this.segmentNum][0], this.SegmentsCoords[this.segmentNum][1]]
             }
-            // Move to previous segment position
+            // Move segment to previous segment position
             if (this.SegmentsCoords[this.segmentNum][0] != this.prevCoords[idx][0]) {
                 if (this.SegmentsCoords[this.segmentNum][0] < this.prevCoords[idx][0]) {
                     this.SegmentsCoords[this.segmentNum][0] += 1;
@@ -176,10 +176,13 @@ function Worm(stride, thickness, length, feedLevel) {
             }
             this.strideNum += 1;
             this.draw();
+            // if stride for segment completed
             if (this.strideNum == this.stride) {
+                // If it was the last segment reset segment number to start over from segment 1
                 if (this.segmentNum == this.length) {
                     this.segmentNum = 1;
                 } else {
+                    // If it was not the last segment increment segment
                     this.segmentNum += 1;
                 }
                 this.strideNum = 1;
@@ -218,7 +221,7 @@ function startGame() {
     var length = document.getElementById("length").value;
     var thickness = document.getElementById("thickness").value;
 
-    worm = new Worm(20, parseInt(thickness), parseInt(length), 500);
+    worm = new Caterpillar(20, parseInt(thickness), parseInt(length), 500);
     intervalId = setInterval(moveWorm, parseInt(speed));
 }
 
